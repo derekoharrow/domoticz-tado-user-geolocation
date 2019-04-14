@@ -42,6 +42,8 @@ global_data.lua
   TadoUserMapping - maps specific Tado users to a specific Tado zone to control. For example:
   
     TadoUserMapping = { initial = { ["Derek"]="Derek's Study", ["Bob"]=["Bob's Bedroom"] } }
+    
+  TadoMode - global variable storing current Tado mode - Home/Away/etc
   
 Domoticz User Variables
 =======================
