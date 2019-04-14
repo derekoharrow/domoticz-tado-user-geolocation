@@ -11,7 +11,7 @@
 return {
 
 	logging = {
-		level = domoticz.LOG_DEBUG, -- Uncomment to override the dzVents global logging setting
+--		level = domoticz.LOG_DEBUG, -- Uncomment to override the dzVents global logging setting
 		marker = 'TADOUSERGEO'
 	},
 	
