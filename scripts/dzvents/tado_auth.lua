@@ -10,19 +10,18 @@
 return {
 
 	logging = {
---		level = domoticz.LOG_DEBUG,			-- Uncomment this line to enable debugging
+--		level = domoticz.LOG_DEBUG,					-- Uncomment this line to enable debugging
 		marker = "TADO-AUTH"
 	},
 
    on = {
-		timer = {'every 6 minutes'},
+		timer = {'every 6 minutes'},				-- Expires every 10 minutes, but LUA only allows 6 minute checking...
 		httpResponses = { 'TadoAuthCallback' }
 	},
 
 	execute = function(domoticz,item)
 
-		-- Every 6 minutes, make a call to Tado to request authorisation token
-		
+	-- Make a call to Tado to request authorisation token	
 		if (item.isTimer) then
 			domoticz.log('Making HTTP call to tado', domoticz.LOG_DEBUG)
 			domoticz.openURL({
@@ -40,7 +39,7 @@ return {
 		
 		if (item.isHTTPResponse) then
 		
-			-- Process TadoAuthCallback trigger event
+		-- Process TadoAuthCallback trigger event
 			if (item.trigger == 'TadoAuthCallback') then
 				if (item.ok) then -- success
 					if (item.isJSON) then
