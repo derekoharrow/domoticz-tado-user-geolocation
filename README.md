@@ -12,7 +12,6 @@ This set of scripts implements a capability that Tado users have been wanting fo
 ## To-Do
 
 - Set a user variable to enable/disable the scripts
-- Set a user variable for the "away" temperature
 
 ## Pre-requisites
 
