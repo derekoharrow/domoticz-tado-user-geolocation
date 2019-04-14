@@ -39,6 +39,9 @@ global_data.lua
  
   TadoClientSecret - global variable for Tado - secret to be used when calling Tado API. Can be found at https://my.tado.com/webapp/env.js
   
+  TadoUserMapping - maps specific Tado users to a specific Tado zone to control. For example:
+    TadoUserMapping = { initial = { ["Derek"]="Derek's Study", ["Bob"]=["Bob's Bedroom"] } }
+  
 Domoticz User Variables
 =======================
 
