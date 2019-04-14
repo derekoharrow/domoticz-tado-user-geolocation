@@ -13,6 +13,7 @@ This set of scripts implements a capability that Tado users have been wanting fo
 ## To-Do
 
 - Set a user variable to enable/disable the scripts
+- Automate retrieval of ClientID and ClientSecret from Tado website
 
 ## Pre-requisites
 
