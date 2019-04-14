@@ -21,6 +21,7 @@ This set of scripts implements a capability that Tado users have been wanting fo
 The following Domoticzz User Variables must be set in order for these scripts to work:
 - **TadoUsername** - the username (email address) that you use to login to Tado - must be admin
 - **TadoPassword** - the password used to log this account in to Tado
+- **TadoAwayTemp** - the Temp, in Celsius, that you wish Tado to set zones to when their matches users are "away".
 
 ### Global Data
 
