@@ -120,7 +120,7 @@ return {
 								
 								-- Set overlay (turn temp down)
 									domoticz.log('.........Tado set to HOME and user AWAY and no Override set - turn temp down until they get back', domoticz.LOG_DEBUG)
-									os.execute("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X PUT -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken ..  "' -H 'Content-Type: application/json;charset=utf-8' --data '{\"setting\":{\"type\":\"HEATING\",\"power\":\"ON\",\"temperature\":{\"celsius\":" .. tostring(domoticz.globalData.TadoAwayTemp) .. "}},\"termination\":{\"type\":\"TADO_MODE\"}}'")
+									os.execute("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X PUT -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken ..  "' -H 'Content-Type: application/json;charset=utf-8' --data '{\"setting\":{\"type\":\"HEATING\",\"power\":\"ON\",\"temperature\":{\"celsius\":" .. tostring(domoticz.variables('TadoAwayTemp').value) .. "}},\"termination\":{\"type\":\"TADO_MODE\"}}'")
 								end
 							end
 
