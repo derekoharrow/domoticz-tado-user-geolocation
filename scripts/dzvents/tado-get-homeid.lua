@@ -4,7 +4,7 @@
 --
 -- Every 15 minutes, get the Tado Home ID 
 --
--- Token is stored in domoticz.globalData.TadoHomeID
+-- ID is stored in domoticz.globalData.TadoHomeID
 --
 
 return {
@@ -21,14 +21,13 @@ return {
 
 	execute = function(domoticz,item)
 
-		-- Check TadoToken has been set first. Won't work without it.
+	-- Check TadoToken has been set first. Won't work without it.
 		if domoticz.globalData.TadoToken == '' then
 			domoticz.log('ERROR: Tado token not set', domoticz.LOG_ERROR)
 			return
 		end
 		
-		-- Every 6 minutes, make a call to Tado to request authorisation token
-		
+	-- Make a call to Tado to request the HomeId
 		if (item.isTimer) then
 			domoticz.log('Making HTTP call to tado to get HomeId', domoticz.LOG_DEBUG)
 			domoticz.openURL({
@@ -39,11 +38,10 @@ return {
 			})
 		end
 		
-		-- Process HTTP response to token request and store tado authentication token in globalData
-		
+	-- Process HTTP response to token request and store tado authentication token in globalData
 		if (item.isHTTPResponse) then
 		
-			-- Process TadoAuthCallback trigger event			
+		-- Process TadoAuthCallback trigger event			
 			if (item.trigger == 'TadoGetHomeIdCallback') then
 				if (item.ok) then -- success
 					if (item.isJSON) then
