@@ -43,6 +43,5 @@ Domoticz User Variables
 =======================
 
   TadoUsername - the username (email address) that you use to login to Tado - must be admin
-  TadoPassword - the password used to log this account in to Tado
   
- 
+  TadoPassword - the password used to log this account in to Tado
