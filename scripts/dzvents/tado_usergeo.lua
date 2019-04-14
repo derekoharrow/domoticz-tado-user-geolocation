@@ -51,7 +51,8 @@ return {
 		do
 			local username = domoticz.globalData.TadoUsers[i].name
 			domoticz.log('User =' .. username, domoticz.LOG_DEBUG)
-			if domoticz.globalData.TadoUsers[i].mobileDevices[1].location.atHome then
+			local userhome = domoticz.globalData.TadoUsers[i].mobileDevices[1].location.atHome
+			if userhome then
 				domoticz.log('...HOME', domoticz.LOG_DEBUG)
 			else
 				domoticz.log('...AWAY', domoticz.LOG_DEBUG)
@@ -87,15 +88,40 @@ return {
 						
 						if domoticz.globalData.TadoMode == 'HOME' then
 
-						-- Turn off Overlay, if user is Home and overlay is on (true)
-							if domoticz.globalData.TadoUsers[i].mobileDevices[1].location.atHome and domoticz.globalData.TadoZoneOverlays[j] then
-								domoticz.log('.........Tado set to HOME and user HOME - turn off override', domoticz.LOG_DEBUG)
-								os.execute ("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X DELETE -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken)
+						-- User is home
+							if userhome then
+							
+							-- Overlay already set
+								if domoticz.globalData.TadoZoneOverlays[j] then
+								
+								--	Turn off the overlay
+									domoticz.log('.........Tado set to HOME, user HOME, Override set - turn off override', domoticz.LOG_DEBUG)
+									domoticz.log ("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X DELETE -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken .. "'", domoticz.LOG_DEBUG)
+									os.execute ("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X DELETE -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken .. "'")
 
-						-- Turn on Overlay to set heating to low temp as user is AWAY
+							-- Overlay not set
+								else
+								
+								-- Do nothing
+									domoticz.log('.........Tado set to HOME and user HOME, but no override set', domoticz.LOG_DEBUG)
+								end
+							
+						-- User is away
 							else
-								domoticz.log('.........Tado set to HOME and user AWAY - turn temp down until they get back', domoticz.LOG_DEBUG)
-								os.execute("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X PUT -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken ..  "' -H 'Content-Type: application/json;charset=utf-8' --data '{\"setting\":{\"type\":\"HEATING\",\"power\":\"ON\",\"temperature\":{\"celsius\":" .. tostring(domoticz.globalData.TadoAwayTemp) .. "}},\"termination\":{\"type\":\"TADO_MODE\"}}'")
+							
+							-- Overlay already set
+								if domoticz.globalData.TadoZoneOverlays[j] then
+								
+								-- Do nothing
+									domoticz.log('.........Tado set to HOME and user Away and override set', domoticz.LOG_DEBUG)
+
+							-- No Overlay set
+								else
+								
+								-- Set overlay (turn temp down)
+									domoticz.log('.........Tado set to HOME and user AWAY and no Override set - turn temp down until they get back', domoticz.LOG_DEBUG)
+									os.execute("curl -s 'https://my.tado.com/api/v2/homes/" .. domoticz.globalData.TadoHomeId .. "/zones/" .. tostring(j) .. "/overlay' -X PUT -H 'Authorization: Bearer " .. domoticz.globalData.TadoToken ..  "' -H 'Content-Type: application/json;charset=utf-8' --data '{\"setting\":{\"type\":\"HEATING\",\"power\":\"ON\",\"temperature\":{\"celsius\":" .. tostring(domoticz.globalData.TadoAwayTemp) .. "}},\"termination\":{\"type\":\"TADO_MODE\"}}'")
+								end
 							end
 
 					-- Everyone is AWAY...
@@ -104,7 +130,7 @@ return {
 
 						-- Odd scenario - Tado says it's in Away mode, but some user reported as being at home - shouldn't happen in normal life...
 							if domoticz.globalData.TadoUsers[i].mobileDevices[1].location.atHome then
-								domoticz.log('.........What's going on here??? Tado set to AWAY and user HOME', domoticz.LOG_DEBUG)
+								domoticz.log('.........What\'s going on here??? Tado set to AWAY and user HOME', domoticz.LOG_DEBUG)
 
 						-- Tado set to away mode and user set to away mode - normal state of affairs, so do nothing...
 							else
