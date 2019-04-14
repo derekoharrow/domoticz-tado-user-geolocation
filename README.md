@@ -8,6 +8,7 @@ This set of scripts implements a capability that Tado users have been wanting fo
 
 - If a user has already put a Zone into manual control mode it could be overwritten 
 - At present the script sets either the heating to be on, as per programme, or turned down to a reduced value. It doesn't account for whether the user is far away or heading home and will only turn the heating for that zone back on when the user is detected (by Tado) as being back home.
+- At present, only one Zone can be controlled per tado user.
 
 ## To-Do
 
@@ -33,6 +34,14 @@ The following Domoticzz User Variables must be set in order for these scripts to
 - **TadoUserMapping** - maps specific Tado users to a specific Tado zone to control. For example:
 - **TadoMode** - global variable storing current Tado mode - Home/Away/etc
 - **TadoUserMapping** = { initial = { ["Derek"]="Derek's Study", ["Bob"]=["Bob's Bedroom"] } }
+
+## Instructions
+1. Create the Domoticz User Variables TadoUsername and TadoPassword as Strings and set them to your Tado credentials.
+2. Create the Domoticz User Variable TadoAwayTemp as an Integer and set it to your desired away temp (in Celsius)
+3. Copy the data values from the enclosed global_data.lua and merge it into your global_data.lua in domoticz/scripts/dzvents
+4. Edit the TadoUserMapping parameter in global_data.lua to map users to the zone you want to control for each of them. You must use the user names and zone names as they appear in Tado here.
+5. Copy the rest of the LUA files into your domoticz/scripts/dzvents folder
+6. (Optional) turn on debugging in each LUA file by uncommenting the debug level in the logging section at the start of each script.
 
 ## Scripts
 
