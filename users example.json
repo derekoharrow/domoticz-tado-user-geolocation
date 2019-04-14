@@ -1,0 +1,164 @@
+[
+  {
+    "name": "Lauren O'Harrow",
+    "email": "Lauren@oharrow.co.uk",
+    "username": "Lauren@oharrow.co.uk",
+    "id": "595e4514098f33250add2397",
+    "homes": [
+      {
+        "id": 84167,
+        "name": "Home"
+      }
+    ],
+    "locale": "en",
+    "mobileDevices": [
+      {
+        "name": "Lauren's Phone",
+        "id": 326414,
+        "settings": {
+          "geoTrackingEnabled": true
+        },
+        "location": {
+          "stale": false,
+          "atHome": false,
+          "bearingFromHome": {
+            "degrees": 149.043258794877,
+            "radians": 2.6012955938725995
+          },
+          "relativeDistanceFromHomeFence": 0.49859574613219987
+        },
+        "deviceMetadata": {
+          "platform": "iOS",
+          "osVersion": "12.1",
+          "model": "iPhone8,1",
+          "locale": "en"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Ryan O'Harrow",
+    "email": "Ryan@oharrow.co.uk",
+    "username": "Ryan@oharrow.co.uk",
+    "id": "595e4514098f33250add2235",
+    "homes": [
+      {
+        "id": 84167,
+        "name": "Home"
+      }
+    ],
+    "locale": "en_GB",
+    "mobileDevices": [
+      {
+        "name": "Ryan’s iPhone",
+        "id": 1002873,
+        "settings": {
+          "geoTrackingEnabled": true,
+          "pushNotifications": {
+            "lowBatteryReminder": true,
+            "awayModeReminder": true,
+            "homeModeReminder": true,
+            "openWindowReminder": true,
+            "energySavingsReportReminder": true
+          }
+        },
+        "location": {
+          "stale": false,
+          "atHome": false,
+          "bearingFromHome": {
+            "degrees": 148.89183182652224,
+            "radians": 2.5986526946984956
+          },
+          "relativeDistanceFromHomeFence": 0.4987192317431875
+        },
+        "deviceMetadata": {
+          "platform": "iOS",
+          "osVersion": "12.2",
+          "model": "iPhone9,3",
+          "locale": "en"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Derek O'Harrow",
+    "email": "derek@oharrow.co.uk",
+    "username": "derek@oharrow.co.uk",
+    "id": "595e4514098f33250add17e4",
+    "homes": [
+      {
+        "id": 84167,
+        "name": "Home"
+      }
+    ],
+    "locale": "en_GB",
+    "mobileDevices": [
+      {
+        "name": "Dereks S8+",
+        "id": 389764,
+        "settings": {
+          "geoTrackingEnabled": true
+        },
+        "location": {
+          "stale": false,
+          "atHome": true,
+          "bearingFromHome": {
+            "degrees": 352.72214450771025,
+            "radians": 6.156162766354777
+          },
+          "relativeDistanceFromHomeFence": 0
+        },
+        "deviceMetadata": {
+          "platform": "Android",
+          "osVersion": "9",
+          "model": "Samsung_SM-G955F",
+          "locale": "en"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Lindsey O'Harrow",
+    "email": "lindsey@oharrow.co.uk",
+    "username": "lindsey@oharrow.co.uk",
+    "id": "595e4514098f33250add1e65",
+    "homes": [
+      {
+        "id": 84167,
+        "name": "Home"
+      }
+    ],
+    "locale": "en",
+    "mobileDevices": [
+      {
+        "name": "Lindsey IPhone",
+        "id": 293415,
+        "settings": {
+          "geoTrackingEnabled": true,
+          "pushNotifications": {
+            "lowBatteryReminder": false,
+            "awayModeReminder": false,
+            "homeModeReminder": false,
+            "openWindowReminder": false,
+            "energySavingsReportReminder": false
+          }
+        },
+        "location": {
+          "stale": false,
+          "atHome": false,
+          "bearingFromHome": {
+            "degrees": 192.22739845528986,
+            "radians": 3.35500101558787
+          },
+          "relativeDistanceFromHomeFence": 0.5445096602159206
+        },
+        "deviceMetadata": {
+          "platform": "iOS",
+          "osVersion": "12.1.4",
+          "model": "iPhone10,4",
+          "locale": "en"
+        }
+      }
+    ]
+  }
+]
